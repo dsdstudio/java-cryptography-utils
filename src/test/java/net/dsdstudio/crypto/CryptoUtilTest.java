@@ -44,7 +44,7 @@ public class CryptoUtilTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void pkcs10Test() throws Exception {
         // 비대칭키 pub, prikey 생성
         KeyPair ecdsaKeyPair = generateKeyPair("ECDSA");
 
@@ -57,7 +57,7 @@ public class CryptoUtilTest {
         String certString = pkcs10.pkcs10ToString(pkcs10CertificationRequest);
         System.out.println(certString);
 
-        Files.write(Paths.get("test.certSigningRequest"), certString.getBytes());
+        Files.write(Paths.get("pkcs10Test.certSigningRequest"), certString.getBytes());
     }
 
     private KeyPair generateKeyPair(String algorithm) {
