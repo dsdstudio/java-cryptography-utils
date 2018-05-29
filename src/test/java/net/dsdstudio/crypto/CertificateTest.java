@@ -30,6 +30,12 @@ public class CertificateTest {
     }
 
     @Test
+    public void readTest() {
+        X509Certificate cert = CertUtils.readCert(Paths.get("test.crt"));
+        System.out.println(cert);
+    }
+
+    @Test
     public void 셀프사인_인증서생성테스트() throws Exception {
         KeyPair pair = CertUtils.generateKeyPair("ECDSA", 256);
         X509Certificate cert = generateRootCertificate(pair, "SHA512WithECDSA");
