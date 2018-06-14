@@ -38,17 +38,17 @@ public class CertificateTest {
     @Test
     public void 셀프사인_인증서생성테스트() throws Exception {
         KeyPair pair = CertUtils.generateKeyPair("ECDSA", 256);
-        X509Certificate cert = generateRootCertificate(pair, "SHA512WithECDSA");
+        X509Certificate cert = generateSelfSignedCertificate(pair, "SHA512WithECDSA");
         System.out.println(cert);
 
         CertUtils.writeCertFile(Paths.get("test.crt"), cert);
 
         pair = CertUtils.generateKeyPair("RSA", 4096);
-        cert = generateRootCertificate(pair, "SHA512WithRSA");
+        cert = generateSelfSignedCertificate(pair, "SHA512WithRSA");
         System.out.println(cert);
     }
 
-    private X509Certificate generateRootCertificate(KeyPair pair, String signatureAlgorithm) throws Exception {
+    private X509Certificate generateSelfSignedCertificate(KeyPair pair, String signatureAlgorithm) throws Exception {
         X500Name issuer = new X500NameBuilder()
                 .addRDN(BCStyle.C, "KR")
                 .addRDN(BCStyle.O, "DSDSTUDIO")

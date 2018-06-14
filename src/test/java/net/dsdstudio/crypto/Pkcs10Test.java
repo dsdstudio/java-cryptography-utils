@@ -16,7 +16,6 @@ import java.security.Security;
 import static net.dsdstudio.crypto.CertUtils.generateKeyPair;
 
 public class Pkcs10Test {
-    private final Pkcs10 pkcs10 = new Pkcs10();
 
     @BeforeClass
     public static void setUp() {
@@ -34,8 +33,8 @@ public class Pkcs10Test {
                 .addRDN(BCStyle.O, "DSDSTUDIO")
                 .addRDN(BCStyle.OU, "DSDSTUDIO")
                 .build();
-        PKCS10CertificationRequest pkcs10CertificationRequest = pkcs10.generatePKCS10(ecdsaKeyPair, "SHA512withECDSA", subject);
-        String certString = pkcs10.pkcs10ToString(pkcs10CertificationRequest);
+        PKCS10CertificationRequest pkcs10CertificationRequest = Pkcs10.generatePKCS10(ecdsaKeyPair, "SHA512withECDSA", subject);
+        String certString = Pkcs10.pkcs10ToString(pkcs10CertificationRequest);
         System.out.println(certString);
 
         Files.write(Paths.get("pkcs10Test.certSigningRequest"), certString.getBytes());
