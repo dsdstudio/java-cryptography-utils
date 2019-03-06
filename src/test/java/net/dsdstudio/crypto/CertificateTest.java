@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.math.BigInteger;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.Security;
@@ -35,6 +36,12 @@ public class CertificateTest {
         System.out.println(cert);
     }
 
+    @Test
+    public void 키페어_테스트() {
+        KeyPair pair = CertUtils.generateKeyPair("ECDSA", 256);
+        pair.getPrivate().getEncoded();
+        Files.write()
+    }
     @Test
     public void 셀프사인_인증서생성테스트() throws Exception {
         KeyPair pair = CertUtils.generateKeyPair("ECDSA", 256);
